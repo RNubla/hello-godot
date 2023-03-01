@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4kj40mk5r1kc"]
+
+[ext_resource type="PackedScene" uid="uid://k0202uwp48t1" path="res://prefabs/weapons/orginial_file/daewoo-k2-assult-rifle-reload-animation/source/deawoo-k2-fixed-normal.glb" id="1_gucwd"]
+
+[node name="deawoo-k2-fixed-normal" instance=ExtResource("1_gucwd")]
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0, 0, 0)
+
+[node name="armMesh" parent="Armature/Skeleton3D" index="0"]
+cast_shadow = 0
+
+[node name="Mesh_0036003" parent="Armature/Skeleton3D" index="1"]
+cast_shadow = 0
+
+[node name="ProjectileSpawn" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.04941)

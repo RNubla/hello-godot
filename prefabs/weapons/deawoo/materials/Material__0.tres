@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b0x56no4afr8m"]
+
+[ext_resource type="Texture2D" uid="uid://d3gqukkyl4nl8" path="res://prefabs/weapons/orginial_file/daewoo-k2-assult-rifle-reload-animation/textures/k2.png" id="1_turrh"]
+
+[resource]
+resource_name = "Material__0"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_turrh")
+metallic = 0.4
+roughness = 0.819178
+normal_enabled = true

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://monnenmlrdbj"]
+
+[ext_resource type="Texture2D" uid="uid://bcpagiuvrhirr" path="res://prefabs/weapons/orginial_file/daewoo-k2-assult-rifle-reload-animation/textures/armcolor.png" id="1_6tc3p"]
+[ext_resource type="Texture2D" uid="uid://osgc03veevwi" path="res://prefabs/weapons/orginial_file/daewoo-k2-assult-rifle-reload-animation/textures/armNormal.png" id="2_ifjh2"]
+
+[resource]
+resource_name = "arms"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_6tc3p")
+metallic = 0.4
+roughness = 0.242676
+normal_enabled = true
+normal_texture = ExtResource("2_ifjh2")
