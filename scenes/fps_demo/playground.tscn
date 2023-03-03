@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dn55ba2grwfhg"]
+[gd_scene load_steps=10 format=3 uid="uid://dn55ba2grwfhg"]
 
 [ext_resource type="Material" uid="uid://dfe1ml7gf3evv" path="res://prefabs/materials/demo_ground_material.tres" id="1_4xfgd"]
 [ext_resource type="PackedScene" uid="uid://cq14wwxgywl32" path="res://prefabs/player/player.tscn" id="1_6ce0q"]
-[ext_resource type="PackedScene" uid="uid://cuvwlwuv26207" path="res://prefabs/weapons/bullet/bullet.tscn" id="3_gj8y1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5kky7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -62,6 +61,3 @@ surface_material_override/0 = ExtResource("1_4xfgd")
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.945915, -8.92222)
 mesh = SubResource("CapsuleMesh_cary1")
-
-[node name="Bullet" parent="." instance=ExtResource("3_gj8y1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.6996, -20.156)

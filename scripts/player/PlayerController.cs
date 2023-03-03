@@ -7,8 +7,10 @@ public partial class PlayerController : CharacterBody3D
     public const float Speed = 350.0f;
     public const float JumpVelocity = 4.5f;
     public float camera_x_rot = 0.0f;
-    private const float CAMERA_X_ROT_MIN = -89.9f;
-    private const float CAMERA_X_ROT_MAX = 70f;
+    [Export]
+    public float CAMERA_X_ROT_MIN = -89.9f;
+    [Export]
+    public float CAMERA_X_ROT_MAX = 70f;
 
     [Export]
     private float _sensitivity = 0.25f;
