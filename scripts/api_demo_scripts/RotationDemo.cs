@@ -5,30 +5,30 @@ using System;
 public partial class RotationDemo : Node3D
 {
     [Export]
-    private Node3D childObject = new Node3D();
+    NodePath child;
     [Export]
-    private NodePath childObjectNodePath;
+    NodePath parent;
+
+    private Node3D parentObject;
+    private Node3D childObject;
 
     [Export]
     public Vector3 parentObjectRotation;
     public override void _Ready()
     {
-        // childObject = GetNode<Node3D>(".");
-        childObject = GetNode<Node3D>(childObjectNodePath);
-        // GD.Print("_Ready: ", childObject);
+        //Note that in order to link nodes to code,
+        //we must pass a nodepath to from the editor
+        //and set it on the _Ready function
+        parentObject = GetNode<Node3D>(parent);
+        childObject = GetNode<Node3D>(child);
     }
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
         if (Engine.IsEditorHint())
         {
-            // GD.Print(childObjectNodePath);
-            this.RotateX(0.5f * (float)delta);
-            // childObject.RotateX(1);
-            // this.childObject.RotateX(0.5f * (float)delta);
-            this.parentObjectRotation.X = this.Rotation.X;
-            // childObject.Transform.Rotated(Vector3.Left, 0.5f * (float)delta);
-            // this.childObject.Rotate(Vector3.Left, this.GlobalRotation.X);
+            parentObject.GlobalRotate(Vector3.Up, (0.5f * (float)delta));
+            childObject.RotationDegrees = parentObject.RotationDegrees;
         }
     }
 }

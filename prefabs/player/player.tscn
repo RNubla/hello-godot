@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cq14wwxgywl32"]
 
 [ext_resource type="Script" path="res://scripts/player/PlayerController.cs" id="1_0k78r"]
-[ext_resource type="PackedScene" uid="uid://b2gex42saprfq" path="res://prefabs/player/PlayerCharacter.tscn" id="2_iq6g5"]
+[ext_resource type="PackedScene" uid="uid://chu7tpeivodq" path="res://prefabs/player/PlayerCharacter.tscn" id="2_iq6g5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_klm7f"]
 
@@ -9,12 +9,12 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_rgs6w"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("mainCamera", "camTarget", "weapon", "headNode")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("mainCamera", "headNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000715256, 0.138395, -0.00433922)
 script = ExtResource("1_0k78r")
 mainCamera = NodePath("Head/MainCamera")
-camTarget = NodePath("Head/MainCamera/CamTarget")
-weapon = NodePath("CharSkin/PlayerCharacter/RootNode/Sketchfab_DeagleReload_1/ma1")
+weaponPath = NodePath("CharSkin/PlayerCharacter/RootNode/Sketchfab_DeagleReload_1/WeaponNode")
+cameraCenterNodePath = NodePath("Head/MainCamera/CamTarget")
 headNode = NodePath("Head")
 
 [node name="PlayerMesh" type="CSGMesh3D" parent="."]
@@ -33,7 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.990169, 0)
 shape = SubResource("CapsuleShape3D_1yd15")
 
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.644, 2.80578)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.219, 1.482)
 
 [node name="MainCamera" type="Camera3D" parent="Head"]
 
@@ -44,15 +44,12 @@ mesh = SubResource("SphereMesh_rgs6w")
 [node name="CharSkin" type="Node3D" parent="."]
 
 [node name="PlayerCharacter" parent="CharSkin" instance=ExtResource("2_iq6g5")]
-transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="r_hand" parent="CharSkin/PlayerCharacter/RootNode/Sketchfab_DeagleReload_1/Armature/Skeleton3D" index="9"]
-transform = Transform3D(-0.993286, 0.114655, 0.0153478, -0.113471, -0.991517, 0.0633841, 0.0224849, 0.0612171, 0.997871, -0.2044, -0.28961, 1.37312)
+transform = Transform3D(-0.978716, 0.20495, -6.29444e-05, -0.20495, -0.978714, 0.000645596, 7.07223e-05, 0.000644866, 0.999827, -0.20332, -0.241402, 1.37999)
 
 [node name="l_hand" parent="CharSkin/PlayerCharacter/RootNode/Sketchfab_DeagleReload_1/Armature/Skeleton3D" index="12"]
-transform = Transform3D(-0.0323646, -0.752308, 0.658015, -0.0878145, -0.653673, -0.751664, 0.995611, -0.0821109, -0.0449079, -0.099236, -0.687632, 1.46779)
-
-[node name="ma1" parent="CharSkin/PlayerCharacter/RootNode/Sketchfab_DeagleReload_1" index="2"]
-transform = Transform3D(-6.50727e-09, -5.19235e-17, -0.148869, 5.19235e-17, 0.148869, -5.19235e-17, 0.148869, -5.19235e-17, -6.50727e-09, -0.149406, 1.4889, 0.0594291)
+transform = Transform3D(0.414941, -0.657654, 0.628738, 0.00410127, -0.689677, -0.724102, 0.909837, 0.303039, -0.283478, -0.111091, -0.58803, 1.43331)
 
 [editable path="CharSkin/PlayerCharacter"]

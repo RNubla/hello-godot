@@ -45,6 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7849, 0.662997, -8.04861)
 mesh = SubResource("BoxMesh_te0nn")
 
 [node name="Player" parent="." instance=ExtResource("1_6ce0q")]
+cameraCenterNodePath = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

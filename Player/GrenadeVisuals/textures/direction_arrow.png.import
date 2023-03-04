@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bippf64bo5eeo"
-path.etc2="res://.godot/imported/direction_arrow.png-564ea6b147ccdb60c9ab32a57bc60e94.etc2.ctex"
+path.s3tc="res://.godot/imported/direction_arrow.png-564ea6b147ccdb60c9ab32a57bc60e94.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Player/GrenadeVisuals/textures/direction_arrow.png"
-dest_files=["res://.godot/imported/direction_arrow.png-564ea6b147ccdb60c9ab32a57bc60e94.etc2.ctex"]
+dest_files=["res://.godot/imported/direction_arrow.png-564ea6b147ccdb60c9ab32a57bc60e94.s3tc.ctex"]
 
 [params]
 

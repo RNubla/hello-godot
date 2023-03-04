@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+[Tool]
 public partial class PlayerController : CharacterBody3D
 {
     [Export]
@@ -15,13 +15,26 @@ public partial class PlayerController : CharacterBody3D
     [Export]
     private float _sensitivity = 0.25f;
     [Export] Camera3D mainCamera;
-    [Export] Node3D camTarget;
-    [Export] Node3D weapon;
+
+    [Export]
+    NodePath weaponPath;
+    [Export]
+    NodePath cameraCenterNodePath;
+    private Node3D cameraCenter;
+    private Node3D weaponNode;
+    
     private Quaternion _cameraRotation;
 
     [Export] Node3D headNode;
     // Get the gravity from the project settings to be synced with RigidBody nodes.
     public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+
+    public override void _Ready()
+    {
+        weaponNode = GetNode<Node3D>(weaponPath);
+        cameraCenter = GetNode<Node3D>(cameraCenterNodePath);
+        //Input.MouseMode = Input.MouseModeEnum.Captured;
+    }
 
     public override void _Input(InputEvent @event)
     {
@@ -39,31 +52,36 @@ public partial class PlayerController : CharacterBody3D
         // After relative transforms, camera needs to be renormalized.
         mainCamera.Orthonormalize();
         headNode.RotateX(Mathf.DegToRad(-mouseMotion.Relative.Y * _sensitivity));
+        weaponNode.RotateX(Mathf.DegToRad(-mouseMotion.Relative.Y * _sensitivity));
         Vector3 rotDeg = headNode.RotationDegrees;
+        Vector3 rotDeg2 = weaponNode.RotationDegrees;
         rotDeg.X = Mathf.Clamp(rotDeg.X, CAMERA_X_ROT_MIN, CAMERA_X_ROT_MAX);
+        //rotDeg.Y = -90;
+        //rotDeg2.X = Mathf.Clamp(rotDeg.X, CAMERA_X_ROT_MIN, CAMERA_X_ROT_MAX);
         headNode.RotationDegrees = rotDeg;
-        // weapon.Rotation.X;
-        GD.Print(weapon.Rotation.X);
+        //weaponNode.LookAt
+        //weaponNode.LookAt(-1 * cameraCenter.GlobalTransform.Origin);
+        //weaponNode.RotationDegrees = -1 * rotDeg2;
+        //weaponNode.GlobalTransform.Basis = headNode.GlobalTransform.Basis;
+        GD.Print(weaponNode.GlobalRotationDegrees);
+
     }
 
-
-    public override void _Ready()
-    {
-        GD.Print(mainCamera);
-        GD.Print(weapon);
-        // weapon.RotateZ(0);
-        // mainCamera = GetNode<Camera3D>("Head/MainCamera");
-        // GD.Print("GetChild: ", GetNode<Camera3D>("Head/MainCamera"));
-        // headNode = GetNode<Node3D>("Head");
-        // mainCamera = GetNode<Camera3D>("Head/MainCamera");
-    }
+    //public override void _Process(double delta)
+    //{
+    //    if (Engine.IsEditorHint())
+    //    {
+    //        weaponNode.GlobalRotate(new Vector3(1,0,0), (0.5f * (float)delta));
+    //    }
+    //}
 
     public override void _PhysicsProcess(double delta)
     {
+        
         Vector3 velocity = Velocity;
 
         // Add the gravity.
-        if (!IsOnFloor())
+        if (!IsOnFloor() && !Engine.IsEditorHint())
             velocity.Y -= gravity * (float)delta;
 
         // Handle Jump.

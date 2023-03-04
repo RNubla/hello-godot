@@ -7,12 +7,14 @@
 [sub_resource type="PrismMesh" id="PrismMesh_abb2n"]
 
 [node name="Node3D" type="Node3D"]
-
-[node name="Main" type="Node3D" parent="." node_paths=PackedStringArray("childObject")]
-transform = Transform3D(1, 0, 0, 0, 0.704423, 0.708965, 0, -0.708964, 0.704413, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.223528, 0.974728, 0, -0.974728, 0.223528, 0, 0, 0)
 script = ExtResource("1_lyluy")
-childObject = NodePath("../Child")
-parentObjectRotation = Vector3(-0.788611, 0, 0)
+child = NodePath("Child")
+parent = NodePath("Main")
+parentObjectRotation = Vector3(-1.34537, 0, 0)
+
+[node name="Main" type="Node3D" parent="."]
+transform = Transform3D(0.21572, 0.20905, -0.953998, 0.951866, -0.263386, 0.157536, -0.218285, -0.941959, -0.25576, 0, 0, 0)
 
 [node name="Cube" type="MeshInstance3D" parent="Main"]
 mesh = SubResource("BoxMesh_egsib")
@@ -23,9 +25,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("PrismMesh_abb2n")
 
 [node name="Child" type="Node3D" parent="."]
+transform = Transform3D(0.215695, 0.209015, -0.953842, 0.951755, -0.263345, 0.157522, -0.218259, -0.941801, -0.255733, 2.25029, 0, 0)
 
 [node name="Cube" type="MeshInstance3D" parent="Child"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.68408, 0, -1.66482)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("BoxMesh_egsib")
 skeleton = NodePath("../..")
 
