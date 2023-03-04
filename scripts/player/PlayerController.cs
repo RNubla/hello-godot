@@ -15,6 +15,8 @@ public partial class PlayerController : CharacterBody3D
     [Export]
     private float _sensitivity = 0.25f;
     [Export] Camera3D mainCamera;
+    [Export] Node3D camTarget;
+    [Export] Node3D weapon;
     private Quaternion _cameraRotation;
 
     [Export] Node3D headNode;
@@ -40,12 +42,16 @@ public partial class PlayerController : CharacterBody3D
         Vector3 rotDeg = headNode.RotationDegrees;
         rotDeg.X = Mathf.Clamp(rotDeg.X, CAMERA_X_ROT_MIN, CAMERA_X_ROT_MAX);
         headNode.RotationDegrees = rotDeg;
+        // weapon.Rotation.X;
+        GD.Print(weapon.Rotation.X);
     }
 
 
     public override void _Ready()
     {
         GD.Print(mainCamera);
+        GD.Print(weapon);
+        // weapon.RotateZ(0);
         // mainCamera = GetNode<Camera3D>("Head/MainCamera");
         // GD.Print("GetChild: ", GetNode<Camera3D>("Head/MainCamera"));
         // headNode = GetNode<Node3D>("Head");
